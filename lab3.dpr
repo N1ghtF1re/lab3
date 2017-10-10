@@ -5,9 +5,9 @@ program lab3;
 uses
   SysUtils;
 
-var x,dx,f1,f2,z,e,epsilon,prev,f2frac,ecurrent:real;
+var x,dx,f1,f2,z,e,epsilon,prev,Curr,prevf2, f2frac,ecurrent:real;
 N:integer;
-i,ExecutionsNum,CurrentNum,k:Byte;
+i,ExecutionsNum,CurrentNum,k,steps:Byte;
 begin
   x:=-0.6; // initial values
   ExecutionsNum:= 20; // number of function values to be found
@@ -28,27 +28,33 @@ begin
     z:=Sqrt(1+sqr(x));
 
     f1:=Ln(x+z)/z;
-    write('|',x:7:2,'|',f1:8:3,'|');
+    write('|',x:7:2,'|',f1:8:4,'|');
 
     epsilon:=1E-2;
     N:=0;
     f2:=x;
+    prev:=x;
     ecurrent:=1;
     k:=1;
+
     while(ecurrent>=1E-4) do
     begin
-
-      f2frac:=((-1)*4*k*k*x*x)/((2*k+1)*2*k);
-      prev:=f2;
-      f2:=f2+f2*f2frac;
-      ecurrent:=Abs(f2-prev);
-      if (prev-f2 = 0) then Write('     The function does not change')
+      //Writeln;
+      //Writeln(f2);
+      //Writeln;
+      //f2frac:=((-1)*4*k*k*x*x)/((2*k+1)*2*k);
+      curr:=prev*((-1)*4*k*k*x*x)/((2*k+1)*2*k);
+      prevf2:=f2;
+      f2:=f2+curr;
+      prev:=curr;
+      ecurrent:=Abs(f2-prevf2);
+      if (prevf2-f2 = 0) then Write('     The function does not change')
       else begin
 
         if(ecurrent < epsilon) then
         begin
           //Writeln('f2 = ', f2, 'epsilon = ', ecurrent, '/', epsilon);
-          write(f2:8:3,'|',k:8,'|');
+          write(f2:8:4,'|',(k+1):8,'|');
           epsilon:=epsilon/10;
         end;
       end;
