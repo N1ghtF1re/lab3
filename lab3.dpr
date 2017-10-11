@@ -28,7 +28,7 @@ begin
     z:=Sqrt(1+sqr(x));
 
     f1:=Ln(x+z)/z;
-    write('|',x:7:2,'|',f1:8:4,'|');
+    write('|',(Trunc(x*1E6)/1E6):7:2,'|',f1:8:4,'|');
 
     epsilon:=1E-2;
     N:=0;
@@ -45,21 +45,29 @@ begin
       f2:=f2+curr;
       prev:=curr;
       ecurrent:=Abs(f2-prevf2);
-      if ((ecurrent<1E-4) and (steps <= 3) and (prevf2-f2 <> 0)) then
-      begin
-        for j:=1 to (3-steps) do
-           write('':8,'|','':8,'|');
+      if (ecurrent < epsilon/10) and (steps<3) and (prevf2-f2 <> 0) then begin
+        write('not achieved  ':17,'|');
+        Inc(steps);
+        if ((ecurrent<1E-4) and (steps <= 3) and (prevf2-f2 <> 0)) then
+        begin
+          for j:=1 to (3-steps) do
+             write('not achieved  ':17,'|');
+          Inc(steps);
+        end;
       end;
-      if (prevf2-f2 = 0) then Write('       The function does not change')
+      if (prevf2-f2 = 0) then
+        Write('The function does not change           |':54)
+
       else begin
 
-        if((ecurrent < epsilon)) then
+        if((ecurrent < epsilon){  and (ecurrent < epsilon/10) }) then
         begin
           //Writeln('f2 = ', f2, 'epsilon = ', ecurrent, '/', epsilon);
           write(f2:8:4,'|',(k+1):8,'|');
           epsilon:=epsilon/10;
           Inc(steps);
-        end;
+        end
+
       end;
       inc(k);
     end;
