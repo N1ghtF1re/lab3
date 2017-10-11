@@ -5,7 +5,7 @@ program lab3;
 uses
   SysUtils;
 
-var x,dx,f1,f2,z,epsilon,PrevTerm,CurrTerm,prevf2,ecurrent:real;
+var x,dx,f1,f2,z,epsilon,PrevTerm,CurrTerm,prevf2,coef,ecurrent:real;
 k:integer;
 j,ExecutionsNum,CurrentNum,steps:Byte;
 begin
@@ -34,9 +34,10 @@ begin
     ecurrent:=1;
     k:=1;
     steps:=1;
+    coef:=(-1)*4*x*x;
     while(ecurrent>=1E-4) do
     begin
-      CurrTerm:=PrevTerm*((-1)*4*k*k*x*x)/((2*k+1)*2*k);
+      CurrTerm:=PrevTerm*(k*k)*coef/((2*k+1)*2*k);
       prevf2:=f2;
       f2:=f2+CurrTerm;
       PrevTerm:=CurrTerm;
