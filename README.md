@@ -9,7 +9,7 @@ Lab №3. Iteration Cycles
 **Language**: Delphi
 
 **Algorithm scheme**: 
-***
+
 ![Algorithm scheme](https://raw.githubusercontent.com/N1ghtF1re/lab3/master/algorithm_scheme.jpg)
 
 **Code:**
