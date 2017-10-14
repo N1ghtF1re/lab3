@@ -2,11 +2,13 @@ Lab №3. Iteration Cycles
 --------------------
 ***
 #### Task:
-![The task](https://i.imgur.com/jWmlGOn.png)
+![The task](https://i.imgur.com/ItIPmqT.png)
 
 >The program displays a table with the values of the functions **f1** and **f2** for given x and determines the number of steps necessary to achieve the specified accuracies in the function 2
 
 **Language**: Delphi
+
+**Algorithm scheme**: ![Algorithm scheme](https://raw.githubusercontent.com/N1ghtF1re/lab3/master/algorithm_scheme.jpg)
 
 **Code:**
 ```
