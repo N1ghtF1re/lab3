@@ -13,7 +13,7 @@ Lab №3. Iteration Cycles
 ![Algorithm scheme](https://raw.githubusercontent.com/N1ghtF1re/lab3/master/algorithm_scheme.jpg)
 
 **Code:**
-```
+``` pascal
 program lab3;
 
 {$APPTYPE CONSOLE}
